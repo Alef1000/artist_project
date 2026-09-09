@@ -1,0 +1,28 @@
+body {
+    height: 200vh;
+    width: 200vh;
+    background-color: azure;
+    margin: 0;
+}
+
+.UI {
+    display: flex;
+    flex-flow: column;
+    justify-content: stretch;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+}
+
+.header {
+    background-color: beige;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sidebar {
+    display: flex;
+    justify-content: space-between;
+
+}
