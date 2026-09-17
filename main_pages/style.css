@@ -8,7 +8,6 @@ body {
 .UI {
     display: flex;
     flex-flow: column;
-    justify-content: stretch;
     height: 100%;
     width: 100%;
     position: fixed;
@@ -24,5 +23,23 @@ body {
 .sidebar {
     display: flex;
     justify-content: space-between;
+    align-content: stretch;
+    flex: auto;
+}
 
+.left, .right {
+    background-color:rgb(229, 241, 210) ;
+    display: flex;
+    flex-flow: column;
+    padding: 1em;
+}
+
+.footer {
+    height: 30px;
+    background-color: beige;
+    align-self: stretch;
+}
+
+.content {
+    position:relative;
 }
