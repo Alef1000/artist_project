@@ -3,6 +3,13 @@ body {
     width: 200vh;
     background-color: azure;
     margin: 0;
+    display: flex;
+}
+
+.content {
+    flex: auto;
+    padding-top: 100px;
+    padding-left: 200px;
 }
 
 .UI {
@@ -38,8 +45,4 @@ body {
     height: 30px;
     background-color: beige;
     align-self: stretch;
-}
-
-.content {
-    position:relative;
 }
