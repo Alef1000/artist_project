@@ -9,7 +9,7 @@ body {
 .content {
     flex: auto;
     padding-top: 100px;
-    padding-left: 200px;
+    padding-left: 270px;
 }
 
 .UI {
@@ -38,7 +38,13 @@ body {
     background-color:rgb(229, 241, 210) ;
     display: flex;
     flex-flow: column;
+    align-items: flex-start;
+    gap: 8px;
     padding: 1em;
+}
+
+.button {
+    flex: none;
 }
 
 .footer {

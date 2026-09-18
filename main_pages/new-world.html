@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>
+        function createText() {
+            const newParagraph = document.createElement("p");
+            const userMessage = document.createTextNode(document.getElementById("text_box").value);
+
+            newParagraph.appendChild(userMessage);
+
+            const contentBox = document.getElementById("content_box");
+            contentBox.appendChild(newParagraph)
+        };
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="style.css" rel="stylesheet">
     <title>Reality</title>
 </head>
 <body>
-    <div class="content">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTs-5ZARFkgOWMqRjH0zjC3I4COxHzkX6FNG_p1x5VWcfDJJVDdeelPpgVd&s=10">
+    <div class="content" id="content_box">
     </div>
     <div class="UI">
         <div  class="header">
@@ -18,15 +28,17 @@
         </div>
         <div class="sidebar">
             <div class="left">
+                <input type="text" id="text_box">
+                <button id="text_button" onclick="createText()">Enter</button>
                 <a>Corner of the world</a>
                 <a>The machine</a>
             </div>
             <div class="right">
-                evil
+                <button id="image_button">Add image</button>
             </div>
         </div>
         <div class="footer">
-            b
+            Alef :)
         </div>
     </div>
 </body>
