@@ -11,6 +11,10 @@
             const contentBox = document.getElementById("content_box");
             contentBox.appendChild(newParagraph)
         };
+
+        function addImage() {
+
+        };
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,7 +38,8 @@
                 <a>The machine</a>
             </div>
             <div class="right">
-                <button id="image_button">Add image</button>
+                <label for="image_button">Add Image</label>
+                <input type="file" accept=".jpeg, .png, .heif" id="image_button">
             </div>
         </div>
         <div class="footer">
