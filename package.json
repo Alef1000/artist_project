@@ -1,0 +1,20 @@
+{
+  "name": "artist_project",
+  "version": "1.0.0",
+  "description": "My artist project",
+  "homepage": "https://github.com/Alef1000/artist_project#readme",
+  "bugs": {
+    "url": "https://github.com/Alef1000/artist_project/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alef1000/artist_project.git"
+  },
+  "license": "ISC",
+  "author": "Alef_1000",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  }
+}
