@@ -13,7 +13,7 @@
     <div class="UI">
         <div  class="header">
             <img>
-            <h1>The World</h1>
+            <h1>Internet World</h1>
             <img>
         </div>
         <div class="sidebar">
@@ -25,7 +25,10 @@
             </div>
             <div class="right">
                 <label for="image_button">Add Image</label>
-                <input type="file" accept=".jpeg, .png, .heif" id="image_button">
+                <form action="upload.php" method="post" enctype="multipart/form-data">
+                    <input type="file" accept=".jpeg, .png, .heif" name="fileToUpload" id="image_button">
+                    <input type="submit" value="Upload Image" name="upload" name="submit">
+                </form>
             </div>
         </div>
         <div class="footer">
