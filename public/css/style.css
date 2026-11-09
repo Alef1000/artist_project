@@ -1,0 +1,54 @@
+body {
+    height: 200vh;
+    width: 200vh;
+    background-color: azure;
+    margin: 0;
+    display: flex;
+}
+
+.content {
+    flex: auto;
+    padding-top: 100px;
+    padding-left: 270px;
+}
+
+.UI {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+}
+
+.header {
+    background-color: beige;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sidebar {
+    display: flex;
+    justify-content: space-between;
+    align-content: stretch;
+    flex: auto;
+}
+
+.left, .right {
+    background-color:rgb(229, 241, 210) ;
+    display: flex;
+    flex-flow: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 1em;
+}
+
+.button {
+    flex: none;
+}
+
+.footer {
+    height: 30px;
+    background-color: beige;
+    align-self: stretch;
+}
