@@ -13,11 +13,13 @@
   "license": "ISC",
   "author": "Alef_1000",
   "type": "commonjs",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node server.js",
+    "server": "nodemon server.js"
   },
   "dependencies": {
+    "ejs": "^7.0.2",
     "express": "^5.3.0",
     "multer": "^2.5.0"
   },

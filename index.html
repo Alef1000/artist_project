@@ -3,12 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="startup_style.css" rel="stylesheet">
-    <title>Startup</title>
+    <link href="style.css" rel="stylesheet">
+    <title>Reality</title>
+
+    <script>
+        const imageForm = document.querySelector("#image_form");
+        const contentBox = document.querySelector("#content_box");
+        const selectedImage = document.querySelector(".right input input");
+        function createText() {
+            const newParagraph = document.createElement("p");
+            const userMessage = document.createTextNode(document.getElementById("text_box").value);
+
+            newParagraph.appendChild(userMessage);
+
+            const contentBox = document.getElementById("content_box");
+            contentBox.appendChild(newParagraph)
+        };
+
+        function addImage() {
+
+        };
+    </script>
 </head>
 <body>
-    <div class="title">
-        <h1><a href="main_pages/new-world.html">Hello World!</a></h1>
-    </div>
+    <main id="app">
+        <form id="image_form">
+            <div class="content" id="content_box">
+            </div>
+        </form>
+        <div class="UI">
+            <div  class="header">
+                <img>
+                <h1>Internet World</h1>
+                <img>
+            </div>
+            <div class="sidebar">
+                <div class="left">
+                    <input type="text" id="text_box">
+                    <button id="text_button" onclick="createText()">Enter</button>
+                    <a>Corner of the world</a>
+                    <a>The machine</a>
+                </div>
+                <div class="right">
+                    <label for="image_button">Add Image</label>
+                    <input type="file" accept=".jpeg, .png, .heif, .jpg" name="fileToUpload" id="image_button">
+                    <button type="submit" name="upload">Upload Image</button>
+                </div>
+            </div>
+            <div class="footer">
+                Alef :)
+            </div>
+        </div>
+    </main>
 </body>
 </html>
