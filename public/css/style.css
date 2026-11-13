@@ -1,4 +1,8 @@
 body {
+    margin:0;
+}
+
+main {
     height: 200vh;
     width: 200vh;
     background-color: azure;
@@ -6,10 +10,15 @@ body {
     display: flex;
 }
 
-.content {
+#image_form {
     flex: auto;
     padding-top: 100px;
     padding-left: 270px;
+}
+
+.content {
+    flex: auto;
+    
 }
 
 .UI {
