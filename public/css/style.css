@@ -2,6 +2,13 @@ body {
     margin:0;
 }
 
+#image_form {
+    padding: 0px;
+    display: flex;
+    flex-flow: column;
+    gap:6px;
+}
+
 main {
     height: 200vh;
     width: 200vh;
@@ -10,7 +17,7 @@ main {
     display: flex;
 }
 
-#image_form {
+#content_form {
     flex: auto;
     padding-top: 100px;
     padding-left: 270px;
