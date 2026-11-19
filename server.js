@@ -4,6 +4,23 @@ const path = require("path")
 const fs = require("fs")
 const util = require("util")
 const unlinkFile = util.promisify(fs.unlink)
+const {google} = require("googleapis")
+const dotenv = require("dotenv").config()
+
+const port = 3000;
+const app = express()
+
+const FOLDER_ID = process.env.FOLDER_ID;
+const GOOGLE_TOKEN = process.env.GOOGLE_REFRESH_TOKEN;
+
+// Token retrieval
+
+
+// End of authentication
+
+const drive = google.drive({
+    version: "v3"
+});
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -43,31 +60,67 @@ function checkFileType (file, cb) {
     }
 }
 
-const port = 3000;
-
-const app = express()
-
 app.use(express.json())
 app.use(express.urlencoded({extended:false}))
 
 app.set("view engine", "ejs")
 app.set("views", path.join(__dirname, "/"))
 
-app.use(express.static(path.join(__dirname, "public")))
+app.use(express.static(path.join(__dirname, "/public")))
 
 app.get("/", (req, res) => {
-    res.render("index")
-})
+res.render("index")
+});
 
 app.post("/upload", function (req, res) {
-    upload(req, res, (err) => {
-        if(!err && req.file != "") {
-            res.status(200).send("Success!")
-        } else if (err) {
-            return res.status(400).send(err.message)
-        }
-    })
+        upload(req, res, async (err) => {
+            if(!err && req.file != "") {
+                res.status(200).send("Success!")
+            } else if (err) {
+                return res.status(400).send(err.message)
+            }
+        })
+
 })
+/*
+        try {
+            const { data } = await drive.files.create({
+                requestBody: {
+                    name: Date.now() + "-" + req.file.originalname,
+                    parents: [FOLDER_ID]
+                },
+                meida: {
+                mimetype: req.file.mimetype,
+                body: Readable.from(req.file.buffer)
+                },
+                fields: "id, name",
+                supportsAllDrives: true
+            });
+            res.json(data);
+        } catch (e) {
+            console.error(e);
+            res.status(500).send("Drive upload failed");
+        }
+*/
+
+app.get("/api/images", async (req, res) => {
+    try {
+        const { data } = await drive.files.list({
+            q: `"${FOLDER_ID}" in parents and mimeType contains "image/" and trashed = false`,
+            fields: "files(id, name, createdTime)",
+            orderBy: "createdTime desc",
+            pageSize: 100,
+            supportsAllDrives: true,
+            includeItemsFromAllDrives: true
+        });
+
+        res.json(data.files);
+    } catch (e) {
+        console.error(e);
+        res.status(500).send("Could not list all images");
+    }
+});
+
 
 app.listen(port, () => {
     console.log(`Server started on port ${port}`)
