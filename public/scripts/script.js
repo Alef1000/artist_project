@@ -61,7 +61,7 @@ function saveImage() {
 
 async function loadImagesDrive() {
     const res = await fetch("/api/images");
-    const files = await res.json;
+    const files = res.json;
     const content_box = document.querySelector("#content_box")
 
     for (const f of files) {
