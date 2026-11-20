@@ -1,3 +1,8 @@
+function getRandomPosition() {
+    const randomPos = Math.round(Math.random()*100);
+    return randomPos + "%" 
+};
+
 function createText() {
     const newParagraph = document.createElement("p");
     const userMessage = getText();
@@ -16,36 +21,28 @@ function getText() {
 function pushText() {
 
 };
-/*
-function getUploadedImages() {
-    return JSON.parse("<%-JSON.stringify(images)%>");
-};
-*/
-function displayImages() {
-    let images = ""
-    const uploadedImages = getUploadedImages();
-    const contentBox = document.querySelector("#content_box")
 
-    uploadedImages.forEach((image, index) => {
-        images += `<div class="image">
-                        <img src="./public/uploads/images/${image}" alt="image">
-                    </div>`
-    })
-    contentBox.InnerHTML = images;
-};
+async function displayImages() {
+    const content_box = document.querySelector("#content_box");
+    const imageData = await fetch("uploads/images");
+    const images = await imageData.json()
+    content_box.innerHTML = "";
+
+    for (const image of images) {
+        const imageElement = document.createElement("img");
+        imageElement.src = image.url;
+        imageElement.alt = image.name;
+        imageElement.className = "image"
+        imageElement.style.objectPosition = `${getRandomPosition()} ${getRandomPosition()}`;
+        content_box.appendChild(imageElement)
+    }
+}
 
 function saveImage() {
     const image_form = document.getElementById("image_form");
     const input = document.querySelector("#image_button");
     const formData = new FormData(image_form)
     const image = input.files[0]
-
-    fetch("authentication", {
-        method: "GET"
-    })
-    .then(response => {
-        console.log(response) & console.log(response.status)
-    })
 
     fetch("upload", {
         method: "POST",
@@ -57,6 +54,8 @@ function saveImage() {
     .catch(error => {
         console.log(error)
     })
+
+    window.location.reload()
 };
 
 async function loadImagesDrive() {
@@ -73,4 +72,5 @@ async function loadImagesDrive() {
     }
 }
 
-loadImagesDrive()
+displayImages();
+console.log(typeof(getRandomPosition()));

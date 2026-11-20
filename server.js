@@ -12,11 +12,7 @@ const app = express()
 
 const FOLDER_ID = process.env.FOLDER_ID;
 const GOOGLE_TOKEN = process.env.GOOGLE_REFRESH_TOKEN;
-
-// Token retrieval
-
-
-// End of authentication
+const uploadDir = path.join(__dirname, "public", "uploads", "images")
 
 const drive = google.drive({
     version: "v3"
@@ -102,7 +98,7 @@ app.post("/upload", function (req, res) {
             res.status(500).send("Drive upload failed");
         }
 */
-
+/*
 app.get("/api/images", async (req, res) => {
     try {
         const { data } = await drive.files.list({
@@ -120,7 +116,22 @@ app.get("/api/images", async (req, res) => {
         res.status(500).send("Could not list all images");
     }
 });
+*/
+app.get("/uploads/images", async function (req, res) {
+    try {
+        const imageData = await fs.promises.readdir(uploadDir);
+        const images = imageData.map(file => ({
+            name: file,
+            url: `/uploads/images/${file}`
+        }));
 
+        res.json(images)
+    } catch (e) {
+        console.error(e);
+        res.status(500).send("Could not list all images");
+    };
+    
+});
 
 app.listen(port, () => {
     console.log(`Server started on port ${port}`)
