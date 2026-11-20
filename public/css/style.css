@@ -1,5 +1,7 @@
 body {
     margin:0;
+    background-color: azure;
+    display: flex;
 }
 
 #image_form {
@@ -10,17 +12,14 @@ body {
 }
 
 main {
-    height: 400vh;
-    background-color: azure;
+    height: 100vh;
     margin: 0;
     display: flex;
 }
 
 #content_form {
-    flex: auto;
-    padding-top: 100px;
-    padding-left: 270px;
-    margin-right: 300px;
+    z-index: 1;
+    flex: 1 1 100%;
     display: flex;
 }
 
@@ -28,6 +27,9 @@ main {
     flex: 1 1 auto;
     display: flex;
     flex-flow: wrap;
+    padding-top: 100px;
+    padding-left: 270px;
+    padding-right: 330px;
 }
 
 .image {
@@ -42,6 +44,7 @@ main {
     height: 100%;
     width: 100%;
     position: fixed;
+    z-index: 2;
 }
 
 .header {

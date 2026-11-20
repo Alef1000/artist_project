@@ -1,6 +1,6 @@
 function getRandomPosition() {
     const randomPos = Math.round(Math.random()*100);
-    return randomPos + "%" 
+    return randomPos + "cqh" 
 };
 
 function createText() {
