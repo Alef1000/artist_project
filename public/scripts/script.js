@@ -26,16 +26,23 @@ async function displayImages() {
     const content_box = document.querySelector("#content_box");
     const imageData = await fetch("uploads/images");
     const images = await imageData.json()
+    let zIndexNumber = 1;
     content_box.innerHTML = "";
 
     for (const image of images) {
-        const imageElement = document.createElement("img");
-        imageElement.src = image.url;
-        imageElement.alt = image.name;
-        imageElement.className = "image"
-        imageElement.style.objectPosition = `${getRandomPosition()} ${getRandomPosition()}`;
-        content_box.appendChild(imageElement)
+        if (image.namne !== ".gitkeep") {
+            const imageElement = document.createElement("img");
+            imageElement.src = image.url;
+            imageElement.alt = image.name;
+            imageElement.style.zIndex = "zIndexNumber";
+            imageElement.className = "image"
+            imageElement.style.margin = `${getRandomPosition()} 0 0 ${getRandomPosition()}`;
+            content_box.appendChild(imageElement)
+        }
+        
     }
+
+    zIndexNumber++;
 }
 
 function saveImage() {
