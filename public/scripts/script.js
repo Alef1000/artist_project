@@ -45,18 +45,22 @@ async function displayImages() {
     zIndexNumber++;
 }
 
-function saveImage() {
+async function saveImage() {
     const image_form = document.getElementById("image_form");
     const input = document.querySelector("#image_button");
     const formData = new FormData(image_form)
     const image = input.files[0]
 
-    fetch("upload", {
+    await fetch("upload", {
         method: "POST",
         body: formData
     })
     .then(response => {
-        if(response.status !== 200) throw Error(response.statusText);
+        if(response.status !== 200) {
+            throw Error(response.statusText)
+        } else if (response.status == 200) {
+            console.log(response)
+        }
     })
     .catch(error => {
         console.log(error)
